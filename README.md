@@ -8,7 +8,7 @@
 
 In this assignment, you will learn how to load data into postgres much faster using two techniques:
 1. batch loading (i.e. running the INSERT command on more than one row at a time)
-1. and parallel loading.
+1. and parallel loading
 
 You will also get practice doing the type of medium sized refactor on code that you didn't write that is common in industry.
 
