@@ -30,7 +30,7 @@ CREATE TABLE users (
     name TEXT,
     location TEXT,
     description TEXT,
-    withheld_in_countries VARCHAR(2)[],
+    withheld_in_countries VARCHAR(2)[]
     --FOREIGN KEY (id_urls) REFERENCES urls(id_urls) DEFERRABLE INITIALLY DEFERRED
 );
 
@@ -55,7 +55,7 @@ CREATE TABLE tweets (
     state_code VARCHAR(2),
     lang TEXT,
     place_name TEXT,
-    geo geometry,
+    geo geometry
     --FOREIGN KEY (id_users) REFERENCES users(id_users) DEFERRABLE INITIALLY DEFERRED,
     --FOREIGN KEY (in_reply_to_user_id) REFERENCES users(id_users) DEFERRABLE INITIALLY DEFERRED
 
@@ -70,7 +70,7 @@ CREATE INDEX tweets_index_withheldincountries ON tweets USING gin(withheld_in_co
 
 CREATE TABLE tweet_urls (
     id_tweets BIGINT,
-    id_urls BIGINT,
+    id_urls BIGINT
     --PRIMARY KEY (id_tweets, id_urls),
     --FOREIGN KEY (id_tweets) REFERENCES tweets(id_tweets) DEFERRABLE INITIALLY DEFERRED,
     --FOREIGN KEY (id_urls) REFERENCES urls(id_urls) DEFERRABLE INITIALLY DEFERRED
@@ -79,7 +79,7 @@ CREATE TABLE tweet_urls (
 
 CREATE TABLE tweet_mentions (
     id_tweets BIGINT,
-    id_users BIGINT,
+    id_users BIGINT
     --PRIMARY KEY (id_tweets, id_users),
     --FOREIGN KEY (id_tweets) REFERENCES tweets(id_tweets) DEFERRABLE INITIALLY DEFERRED,
     --FOREIGN KEY (id_users) REFERENCES users(id_users) DEFERRABLE INITIALLY DEFERRED
@@ -88,7 +88,7 @@ CREATE INDEX tweet_mentions_index ON tweet_mentions(id_users);
 
 CREATE TABLE tweet_tags (
     id_tweets BIGINT,
-    tag TEXT,
+    tag TEXT
     --PRIMARY KEY (id_tweets, tag),
     --FOREIGN KEY (id_tweets) REFERENCES tweets(id_tweets) DEFERRABLE INITIALLY DEFERRED
 );
@@ -99,7 +99,7 @@ CREATE INDEX tweet_tags_index ON tweet_tags(id_tweets);
 CREATE TABLE tweet_media (
     id_tweets BIGINT,
     id_urls BIGINT,
-    type TEXT,
+    type TEXT
     --PRIMARY KEY (id_tweets, id_urls),
     --FOREIGN KEY (id_urls) REFERENCES urls(id_urls) DEFERRABLE INITIALLY DEFERRED,
     --FOREIGN KEY (id_tweets) REFERENCES tweets(id_tweets) DEFERRABLE INITIALLY DEFERRED
