@@ -19,7 +19,8 @@ CREATE TABLE users (
     id_users BIGINT,
     created_at TIMESTAMPTZ,
     updated_at TIMESTAMPTZ,
-    id_urls BIGINT REFERENCES urls(id_urls),
+    --id_urls BIGINT REFERENCES urls(id_urls),
+    url TEXT,
     friends_count INTEGER,
     listed_count INTEGER,
     favourites_count INTEGER,
@@ -70,7 +71,8 @@ CREATE INDEX tweets_index_withheldincountries ON tweets USING gin(withheld_in_co
 
 CREATE TABLE tweet_urls (
     id_tweets BIGINT,
-    id_urls BIGINT
+    --id_urls BIGINT
+    url TEXT
     --PRIMARY KEY (id_tweets, id_urls),
     --FOREIGN KEY (id_tweets) REFERENCES tweets(id_tweets) DEFERRABLE INITIALLY DEFERRED,
     --FOREIGN KEY (id_urls) REFERENCES urls(id_urls) DEFERRABLE INITIALLY DEFERRED
@@ -98,7 +100,8 @@ CREATE INDEX tweet_tags_index ON tweet_tags(id_tweets);
 
 CREATE TABLE tweet_media (
     id_tweets BIGINT,
-    id_urls BIGINT,
+    --id_urls BIGINT,
+    url TEXT,
     type TEXT
     --PRIMARY KEY (id_tweets, id_urls),
     --FOREIGN KEY (id_urls) REFERENCES urls(id_urls) DEFERRABLE INITIALLY DEFERRED,
