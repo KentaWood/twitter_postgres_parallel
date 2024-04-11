@@ -4,6 +4,7 @@ CREATE EXTENSION postgis;
 
 BEGIN;
 
+
 /*
  * Users may be partially hydrated with only a name/screen_name 
  * if they are first encountered during a quote/reply/mention 
@@ -61,6 +62,7 @@ CREATE INDEX tweets_index_withheldincountries ON tweets USING gin(withheld_in_co
 
 CREATE TABLE tweet_urls (
     id_tweets BIGINT,
+
     url TEXT
 );
 
@@ -70,7 +72,6 @@ CREATE TABLE tweet_mentions (
     id_users BIGINT
 );
 CREATE INDEX tweet_mentions_index ON tweet_mentions(id_users);
-
 CREATE TABLE tweet_tags (
     id_tweets BIGINT,
     tag TEXT
